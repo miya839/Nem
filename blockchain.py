@@ -1,6 +1,12 @@
 #!/usr/bin/python
 #-*- codong: utf-8 -*- 
 
+import hashlib
+import json
+
+from time import time
+from uuid import json
+
 class BlockChain(object):
     def __init__(self):
         self.chain = []
@@ -42,6 +48,20 @@ class BlockChain(object):
         return self.chain[-1]
 
 
+    def proof_of_work(self, last_proof):
+        proof = 0
+        while self.valid_proof(last_proof, proof) is False:
+            proof += 1
+        
+        return proof
+
+
+    @staticmethod
+    def valid_proof(last_proof, proof):
+        guess = f'{last_proof}{proof}'.encode()
+        guess_hash = hashlib.sha256(guess).hexdigest()
+
+        return guess_hash[:4] == "0000"
 
 
 block = {
