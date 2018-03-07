@@ -1,5 +1,4 @@
 #NanoWallet用のQRコードを作成する
-
 addressにNanoWalletのアドレスを入力すればQRコードが作成できます．
 詳しくはQiitaに記載
 
